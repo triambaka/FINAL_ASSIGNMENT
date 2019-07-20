@@ -1,7 +1,10 @@
 #Collaborated with Sakshi
+#Scrapping data from multiple HTML files along with multiple headers
+#Scrapped data is stored in Weather.csv
 from bs4 import BeautifulSoup
 import urllib.request
 import csv
+
 
 f=open('Weather.csv','a+',newline='')
 writer=csv.writer(f)
@@ -18,7 +21,10 @@ for n in list:
         writer.writerow(cols)
         #print(cols)
         #Printing it will make it slow
-        
+
+
+#Shuffling the dataset in order to include many cities in the training set
+#Shuffled data is stored in shuffled.csv
 from random import shuffle
 
 with open('Weather.csv') as ip:
@@ -30,7 +36,8 @@ with open('Weather.csv') as ip:
 with open('shuffled.csv','w') as out:
     out.writelines(lines)
 
-    
+#The header that has been included 49 times has to be present only once.
+#Hence that and any other repeated data is removed and the rest is stored in Weather.csv    
 from more_itertools import unique_everseen
 with open('shuffled.csv','r') as f, open('Weather.csv','w') as out_file:
     out_file.writelines(unique_everseen(f))
