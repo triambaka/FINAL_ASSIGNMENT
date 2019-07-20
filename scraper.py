@@ -16,7 +16,8 @@ for n in list:
         cols=row.findChildren(recursive=False)
         cols=[ele.text.strip() for ele in cols]
         writer.writerow(cols)
-        print(cols)
+        #print(cols)
+        #Printing it will make it slow
         
 from random import shuffle
 
